@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void text-ash font-display antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(255, 138, 61, 0.35);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0c1015;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #22303e;
+    border-radius: 6px;
+    border: 2px solid #0c1015;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #33465a;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-panel border border-edge rounded-xl shadow-panel;
+  }
+
+  .panel-raised {
+    @apply bg-raised border border-edge rounded-xl shadow-panel;
+  }
+
+  .label {
+    @apply text-[11px] font-mono uppercase tracking-[0.18em] text-steel;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-mono text-sm font-medium
+      transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember/60
+      disabled:pointer-events-none disabled:opacity-40 select-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-ember px-4 py-2 text-void hover:bg-ember-soft shadow-ember active:translate-y-px;
+  }
+
+  .btn-ghost {
+    @apply btn border border-edge bg-transparent px-4 py-2 text-ash hover:border-steel hover:bg-raised active:translate-y-px;
+  }
+
+  .btn-danger {
+    @apply btn border border-alarm/50 bg-alarm/10 px-4 py-2 text-alarm hover:bg-alarm/20 active:translate-y-px;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-edge bg-hull px-3 py-2 font-mono text-sm text-ash
+      placeholder:text-steel/60 focus:border-ember/70 focus:outline-none focus:ring-1 focus:ring-ember/40;
+  }
+}
+
+/* Background grid used across landing + game shell */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(130, 150, 169, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(130, 150, 169, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.bg-grid-fine {
+  background-image:
+    linear-gradient(rgba(130, 150, 169, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(130, 150, 169, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Faint horizon glow behind heroes */
+.glow-ember {
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255, 138, 61, 0.16), transparent 70%);
+}
+
+.glow-plasma {
+  background: radial-gradient(ellipse 50% 45% at 50% 45%, rgba(92, 184, 255, 0.12), transparent 70%);
+}
+
+@keyframes ticker-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+}
+
+.animate-ticker {
+  animation: ticker-up 1.6s linear infinite;
+}
